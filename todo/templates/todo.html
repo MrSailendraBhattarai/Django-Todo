@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="{% static 'todo.css' %}" />
+  </head>
+  <body>
+    {% if edit_obj %}
+    <form method="POST" action="{% url 'edit' edit_obj.id %}">
+      {% else %}
+      <form action="{% url 'todo' %}">
+        {% endif %}
+      {% csrf_token %}
+      <div class="container">
+        <h2>Welcome to TODO</h2>
+        <h5>Hello {{ user }}</h5>
+        <a href="{% url 'signout' %}"
+          >
+          <img src="{% static 'logout.png' %}" alt="Logout" />
+        </a>
+        <h1>My To-Do List</h1>
+
+        <!-- Task Input Field -->
+        <input
+          type="text"
+          name="title"
+          id="taskInput"
+          placeholder="Enter a task"
+          value="{% if edit_obj %}{{ edit_obj.title }}{% endif %}"
+          required
+        />
+
+        <!-- Submit Button -->
+        <button type="submit">
+          {% if edit_obj %}Update{% else %}Add Task{% endif %}
+        </button>
+
+        <ul id="taskList" class="list-group">
+          {% for task in res %}
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center todo"
+          >
+            <span class="task-title">{{ task.title }}</span>
+            <div class="task-actions">
+              <a
+                href="{% url 'edit' task.id %}"
+                class="btn btn-sm btn-primary me-2"
+              >
+                <img src="{% static 'editing.png' %}" alt="Edit" class="icon" />
+              </a>
+              <a
+                href="{% url 'delete' task.id %}"
+                class="btn btn-sm btn-danger"
+              >
+                <img
+                  src="{% static 'delete.png' %}"
+                  alt="Delete"
+                  class="icon"
+                />
+              </a>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+
+        <style>
+          .todo {
+            transition: transform 0.2s, box-shadow 0.2s;
+          }
+          .todo:hover {
+            transform: scale(1.02);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+          }
+          .task-title {
+            font-weight: 600;
+          }
+          .icon {
+            width: 20px;
+            height: 20px;
+          }
+        </style>
+
+        <!-- Display error if any -->
+        {% if error %}
+        <p style="color: red">{{ error }}</p>
+        {% endif %}
+      </div>
+    </form>
+  </body>
+</html>

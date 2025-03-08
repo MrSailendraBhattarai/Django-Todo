@@ -1,0 +1,115 @@
+/* Center the form on the page */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+}
+
+/* Form container */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 350px;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 30px 25px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+.title {
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+/* Subtitle */
+.sub {
+    text-align: center;
+    color: black;
+    font-size: 14px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.sub a {
+    color: rgb(23, 111, 211);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.sub a:hover {
+    text-decoration: underline;
+}
+
+/* File Upload */
+#file {
+    display: none;
+}
+
+label.avatar {
+    display: block;
+    text-align: center;
+    background-color: rgb(23, 111, 211);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+label.avatar:hover {
+    background-color: rgb(19, 95, 180);
+}
+
+/* Input Fields */
+.input {
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 14px;
+    background-color: rgb(247, 243, 243);
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
+    transition: 0.3s ease-in-out;
+    margin-bottom: 15px;
+    /* Spacing between fields */
+}
+
+/* Input focus effect */
+.input:focus {
+    border: 1px solid rgb(23, 111, 211);
+    box-shadow: 0px 0px 5px rgba(23, 111, 211, 0.5);
+}
+
+/* Button styles */
+button {
+    width: 100%;
+    padding: 14px;
+    background-color: rgb(23, 111, 211);
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    margin-top: 10px;
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: rgb(19, 95, 180);
+    transform: scale(1.02);
+}
